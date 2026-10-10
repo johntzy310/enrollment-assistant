@@ -1,0 +1,27 @@
+[
+  {
+    "id": "faq_001",
+    "question": "What are the freshman admission requirements?",
+    "answer": "Freshman applicants must submit high school transcripts, standardized test scores (optional), and a completed application form."
+  },
+  {
+    "id": "faq_002",
+    "question": "When is the application deadline?",
+    "answer": "The regular decision application deadline is November 30 for the fall semester."
+  },
+  {
+    "id": "faq_003",
+    "question": "How do I apply for financial aid?",
+    "answer": "Complete the FAFSA or CSS Profile online before March 15 to be considered for financial aid."
+  },
+  {
+    "id": "faq_004",
+    "question": "What documents are required for international students?",
+    "answer": "International students must provide TOEFL/IELTS scores, passport copy, financial statement, and evaluated academic transcripts."
+  },
+  {
+    "id": "faq_005",
+    "question": "How can I schedule a campus tour?",
+    "answer": "Campus tours can be booked directly through the admissions portal under the 'Visit Campus' section."
+  }
+]
