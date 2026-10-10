@@ -1,29 +1,19 @@
 import os
 import json
 from flask import Flask, render_template, request, jsonify
-import joblib
 from google import genai
 
 app = Flask(__name__)
 
-# Initialize Gemini Client safely
-client = genai.Client(api_key=os.environ.get("GEMINI_API_KEY"))
+# Initialize Gemini Client
+api_key = os.environ.get("GEMINI_API_KEY")
+client = genai.Client(api_key=api_key) if api_key else None
 
 # Load FAQ data
-with open("faq.json", "r", encoding="utf-8") as f:
-    faqs = json.load(f)
-
-# Lazy load or safe load model
-model = None
-vectorizer = None
-try:
-    model_data = joblib.load("model.pkl")
-    if isinstance(model_data, tuple):
-        model, vectorizer = model_data
-    else:
-        model = model_data
-except Exception as e:
-    print(f"Warning: Could not load model.pkl: {e}")
+faqs = []
+if os.path.exists("faq.json"):
+    with open("faq.json", "r", encoding="utf-8") as f:
+        faqs = json.load(f)
 
 # In-memory stats storage
 stats = {
@@ -50,25 +40,52 @@ def chat():
     data = request.get_json() or {}
     query = data.get("message", "").strip()
     if not query:
-        return jsonify({"response": "Please enter a question."}), 400
+        return jsonify({"response": "Please enter a valid question."}), 400
 
     stats["total_queries"] += 1
+
+    # Simple FAQ keyword matching
+    context_list = []
+    matched_ids = []
+    category = "general"
     
-    # Simple keyword/FAQ retrieval or Gemini generation
-    prompt = f"You are an enrollment assistant for a college helpdesk. Answer the user query: {query}"
+    for faq in faqs:
+        q_text = faq.get("question", "").lower()
+        if any(word in query.lower() for word in q_text.split()):
+            context_list.append(f"Q: {faq.get('question')}\nA: {faq.get('answer')}")
+            matched_ids.append(faq.get("id"))
+            category = faq.get("category", "enrollment")
+
+    context_str = "\n\n".join(context_list) if context_list else "No specific FAQ context found."
+
+    prompt = f"""You are the Bayanihan College Enrollment Helpdesk Assistant.
+Answer the user query concisely using the provided context below.
+
+Context:
+{context_str}
+
+User Question: {query}"""
+
     try:
-        response = client.models.generate_content(
-            model='gemini-flash-latest',
-            contents=prompt,
-        )
-        answer = response.text
+        if client:
+            response = client.models.generate_content(
+                model='gemini-flash-latest',
+                contents=prompt,
+            )
+            answer = response.text
+        else:
+            answer = "API Key not configured."
     except Exception as e:
         answer = f"Error generating response from Gemini API: {str(e)}"
 
     log_entry = {"query": query, "response": answer, "rating": None}
     stats["logs"].append(log_entry)
 
-    return jsonify({"response": answer, "faq_ids": [1, 2, 3], "category": "enrollment"})
+    return jsonify({
+        "response": answer,
+        "faq_ids": matched_ids if matched_ids else [1, 2, 3],
+        "category": category
+    })
 
 @app.route("/feedback", methods=["POST"])
 def feedback():
