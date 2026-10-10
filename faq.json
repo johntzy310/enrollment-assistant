@@ -1,27 +1,17 @@
 [
-  {
-    "id": "faq_001",
-    "question": "What are the freshman admission requirements?",
-    "answer": "Freshman applicants must submit high school transcripts, standardized test scores (optional), and a completed application form."
-  },
-  {
-    "id": "faq_002",
-    "question": "When is the application deadline?",
-    "answer": "The regular decision application deadline is November 30 for the fall semester."
-  },
-  {
-    "id": "faq_003",
-    "question": "How do I apply for financial aid?",
-    "answer": "Complete the FAFSA or CSS Profile online before March 15 to be considered for financial aid."
-  },
-  {
-    "id": "faq_004",
-    "question": "What documents are required for international students?",
-    "answer": "International students must provide TOEFL/IELTS scores, passport copy, financial statement, and evaluated academic transcripts."
-  },
-  {
-    "id": "faq_005",
-    "question": "How can I schedule a campus tour?",
-    "answer": "Campus tours can be booked directly through the admissions portal under the 'Visit Campus' section."
-  }
+  {"id": 1, "category": "requirements", "question": "What are the admission requirements for incoming freshmen?", "answer": "Incoming freshmen must submit Form 138 (Report Card), Certificate of Good Moral Character, and a PSA Birth Certificate."},
+  {"id": 2, "category": "requirements", "question": "Ano ang mga kailangan para sa transferee?", "answer": "Transferees need an Honorable Dismissal, official Transcript of Records (TOR), and Good Moral Certificate."},
+  {"id": 3, "category": "requirements", "question": "Do I need a medical clearance to enroll?", "answer": "Yes, a medical clearance from the school clinic is required during final enrollment validation."},
+  {"id": 4, "category": "schedule", "question": "When does enrollment for the first semester start?", "answer": "Enrollment for the first semester starts on July 1 and ends on August 15."},
+  {"id": 5, "category": "schedule", "question": "Kailan ang huling araw ng late enrollment?", "answer": "Ang huling araw ng late enrollment ay hanggang sa katapusan ng Agosto."},
+  {"id": 6, "category": "schedule", "question": "What date do classes officially start?", "answer": "Classes for the upcoming semester officially begin on September 1."},
+  {"id": 7, "category": "payment", "question": "Can I pay tuition in installments?", "answer": "Yes. Tuition can be paid in four installments: upon enrollment, prelims, midterms, and finals."},
+  {"id": 8, "category": "payment", "question": "Tumatanggap ba kayo ng GCash para sa bayad?", "answer": "Oo, tumatanggap kami ng GCash at Maya para sa online tuition payments."},
+  {"id": 9, "category": "payment", "question": "How much is the minimum downpayment upon enrollment?", "answer": "The minimum downpayment required upon enrollment is 3,000 PHP."},
+  {"id": 10, "category": "scholarship", "question": "Paano mag-apply ng academic scholarship?", "answer": "Academic scholarships are automatically granted to honor graduates with a general average of 90% or above."},
+  {"id": 11, "category": "scholarship", "question": "Are there sports or varsity discounts available?", "answer": "Yes, varsity athletes can apply through the Athletics Department for up to 100% tuition waiver."},
+  {"id": 12, "category": "scholarship", "question": "May financial assistance ba para sa mga working students?", "answer": "Oo, nag-aalok kami ng Student Assistantship program na may kasamang tuition subsidy."},
+  {"id": 13, "category": "registrar services", "question": "Paano kumuha ng Transcript of Records (TOR)?", "answer": "Maaaring mag-request ng TOR sa Registrar's Office counter o sa pamamagitan ng online student portal."},
+  {"id": 14, "category": "registrar services", "question": "Gaano katagal makuha ang Certificate of Enrollment?", "answer": "Ang Certificate of Enrollment ay karaniwang natatapos sa loob ng 1 hanggang 2 araw ng pagtatrabaho."},
+  {"id": 15, "category": "registrar services", "question": "Where is the Registrar's Office located?", "answer": "The Registrar's Office is located on the 2nd floor of the Administration Building."}
 ]
